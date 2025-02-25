@@ -1,0 +1,104 @@
+.icon {
+  width: 56px;
+  height: 56px;
+  background-image: url('../../assets/talent-icons-sprite.png');
+  background-size: auto;
+}
+
+.active-item {
+  @extend .icon;
+
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #6ea5df 50%, #1d2c3d 55%, #6ea5df 105%);
+  border-image-slice: 1;
+
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.5), 
+              0 0 8px rgba(0, 0, 0, 0.8); /* Glow effect */
+
+              //filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.7)); /* Subtle shadow */
+}
+
+.inactive-item {
+  @extend .icon;
+}
+
+.chevrons-active {
+  @extend .active-item;
+  background-position: 400px 0px; 
+}
+
+.chevrons-inactive {
+  @extend .inactive-item;
+  background-position: 400px 50px; 
+}
+
+.silverware-active {
+  @extend .active-item;
+  background-position: 350px 0px; 
+}
+
+.silverware-inactive {
+  @extend .inactive-item;
+  background-position: 350px 50px; 
+}
+
+.cake-active {
+  @extend .active-item;
+  background-position: 300px 0px; 
+}
+
+.cake-inactive {
+  @extend .inactive-item;
+  background-position: 300px 50px; 
+}
+
+.crown-active {
+  @extend .active-item;
+  background-position: 250px 0px; 
+}
+
+.crown-inactive {
+  @extend .inactive-item;
+  background-position: 250px 50px; 
+}
+
+.ship-active {
+  @extend .active-item;
+  background-position: 200px 0px; 
+}
+
+.ship-inactive {
+  @extend .inactive-item;
+  background-position: 200px 50px; 
+}
+
+.snorkel-active {
+  @extend .active-item;
+  background-position: 150px 0px; 
+}
+
+.snorkel-inactive {
+  @extend .inactive-item;
+  background-position: 150px 50px; 
+}
+
+.thunder-active {
+  @extend .active-item;
+  background-position: 100px 0px; 
+}
+
+.thunder-inactive {
+  @extend .inactive-item;
+  background-position: 100px 50px;
+}
+
+.skull-active {
+  @extend .active-item;
+  background-position: 50px 0px;
+}
+
+.skull-inactive {
+  @extend .inactive-item;
+  background-position: 50px 50px;
+}

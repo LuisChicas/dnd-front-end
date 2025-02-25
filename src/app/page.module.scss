@@ -1,0 +1,23 @@
+.container {
+  background-image: url('../../assets/talent-calc-bg.png');
+  background-size: auto;
+}
+
+.title {
+  background-color: gray;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span:last-of-type {
+    color: darkcyan;
+  }
+}
+
+.tree {
+  display: flex;
+  align-items: center;
+}
