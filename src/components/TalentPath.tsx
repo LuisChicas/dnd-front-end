@@ -5,17 +5,13 @@ import TalentPathItem, { RuneIcon } from "./TalentPathItem";
 type TalentPathProps = {
   name: string;
   icons: RuneIcon[];
-  runes: number;
-  onAdd: () => void;
-  onSubstract: () => void;
+  pathNumber: number;
 }
 
 const TalentPath: React.FC<TalentPathProps> = ({
   name,
   icons,
-  runes,
-  onAdd,
-  onSubstract
+  pathNumber
 }) => {
   return (
     <div className={styles.container}>
@@ -23,62 +19,26 @@ const TalentPath: React.FC<TalentPathProps> = ({
       <div className={styles.path}>
         <TalentPathItem 
           icon={icons[0] as RuneIcon} 
-          active={runes > 0}
-          onClick={() => {
-            if (runes === 0) {
-              onAdd();
-            }
-          }}
-          onRightClick={() => {
-            if (runes === 1) {
-              onSubstract();
-            }
-          }}
+          pathNumber={pathNumber}
+          itemNumber={1}
         />
         <div className={styles["path-joint"]}></div>
         <TalentPathItem 
           icon={icons[1] as RuneIcon} 
-          active={runes > 1}
-          onClick={() => {
-            if (runes === 1) {
-              onAdd();
-            }
-          }}
-          onRightClick={() => {
-            if (runes === 2) {
-              onSubstract();
-            }
-          }}
+          pathNumber={pathNumber}
+          itemNumber={2}
         />
         <div className={styles["path-joint"]}></div>
         <TalentPathItem 
           icon={icons[2] as RuneIcon} 
-          active={runes > 2}
-          onClick={() => {
-            if (runes === 2) {
-              onAdd();
-            }
-          }}
-          onRightClick={() => {
-            if (runes === 3) {
-              onSubstract();
-            }
-          }}
+          pathNumber={pathNumber}
+          itemNumber={3}
         />
         <div className={styles["path-joint"]}></div>
         <TalentPathItem 
           icon={icons[3] as RuneIcon}  
-          active={runes > 3}
-          onClick={() => {
-            if (runes === 3) {
-              onAdd();
-            }
-          }}
-          onRightClick={() => {
-            if (runes === 4) {
-              onSubstract();
-            }
-          }}
+          pathNumber={pathNumber}
+          itemNumber={4}
         />
       </div>
     </div>

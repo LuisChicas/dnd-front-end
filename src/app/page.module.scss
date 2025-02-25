@@ -1,21 +1,41 @@
+.root-container {
+  display: flex;
+}
+
 .container {
   background-image: url('../../assets/talent-calc-bg.png');
   background-size: auto;
+  border: 2px solid #15191d;
+  width: fit-content;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
 }
 
 .title {
-  background-color: gray;
+  background-color: #181b1c;
+  margin-bottom: 50px;
+  padding: 5px 0px;
+  text-align: center;
+  font-weight: 700;
 }
 
 .points {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #060708;
+  border: 2px solid #0e1012;
+  padding: 12px 14px;
+  margin-left: 60px;
+  margin-right: 50px;
 
   span:last-of-type {
-    color: darkcyan;
+    color: #405269;
   }
 }
+
+// 10,15,18
+// 18,20,23
 
 .tree {
   display: flex;

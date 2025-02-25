@@ -9,8 +9,9 @@ export type Path = {
 };
 
 interface TalentsContextProps {
-  pathOne: Path;
-  pathTwo: Path;
+  getRunes: (path?: number) => number;
+  addRune: (path: number) => void;
+  removeRune: (path: number) => void;
 }
 
 const TalentsContext = createContext<TalentsContextProps | undefined>(undefined);
@@ -20,21 +21,20 @@ interface TalentsProviderProps {
 }
 
 export const TalentsProvider = ({ children }: TalentsProviderProps) => {
-  const [pathOne, setPathOne] = useState<number>(2);
-  const [pathTwo, setPathTwo] = useState<number>(3);
+  const [pathOne, setPathOne] = useState<number>(0);
+  const [pathTwo, setPathTwo] = useState<number>(0);
   
   return (
     <TalentsContext.Provider value={{ 
-      pathOne: {
-        runes: pathOne,
-        add: () => setPathOne(pathOne + 1),
-        substract: () => setPathOne(pathOne - 1)
+      getRunes: (path) => {
+        if (!!path) {
+          return path === 1 ? pathOne : pathTwo;
+        } else {
+          return pathOne + pathTwo;
+        }
       },
-      pathTwo: {
-        runes: pathTwo,
-        add: () => setPathTwo(pathTwo + 1),
-        substract: () => setPathTwo(pathTwo - 1)
-      },
+      addRune: (path) => path === 1 ? setPathOne(pathOne + 1) : setPathTwo(pathTwo + 1),
+      removeRune: (path) => path === 1 ? setPathOne(pathOne - 1) : setPathTwo(pathTwo - 1),
     }}>
       {children}
     </TalentsContext.Provider>
