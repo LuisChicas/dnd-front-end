@@ -17,7 +17,8 @@ const TalentPathItem: React.FC<TalentPathItemProps> = ({
   itemNumber,
 }) => {
   const [hover, setHover] = useState<boolean>(false);    
-  const { getRunes, addRune, removeRune } = useTalentsContext();
+  const [playDarkenAnimation, setPlayDarkenAnimation] = useState<boolean>(false);    
+  const { getRunes, addRune, removeRune, setRuneLimitAnimation } = useTalentsContext();
   const runes = getRunes(pathNumber);
 
   const active = runes >= itemNumber;
@@ -27,25 +28,42 @@ const TalentPathItem: React.FC<TalentPathItemProps> = ({
 
   const iconClass = icon + (active || shouldBeHighlighted ? "-highlighted" : "");
   const borderClass = `border-${active ? "active" : "inactive"}`
+  const animationClass = playDarkenAnimation ? "darken-animation" : "";
+
+  const onClick = () => {
+    if (isNextToActivate) {
+      addRune(pathNumber);
+    } else if (!active) {
+      setPlayDarkenAnimation(true);
+
+      if (getRunes() === MAX_RUNES)
+        setRuneLimitAnimation(true);
+    }
+  }
+
+  const onRightClick = () => {
+    if (isNextToDeactivate) {
+      removeRune(pathNumber);
+    } else if (active) {
+      setPlayDarkenAnimation(true);
+    }
+  }
 
   return (
     <div 
-      className={`${styles[iconClass]} ${styles[borderClass]}`} 
+      className={`${styles[iconClass]} ${styles[borderClass]} ${styles[animationClass]}`} 
       onClick={(e) => {
         e.preventDefault();
-        if (isNextToActivate) {
-          addRune(pathNumber);
-        }
+        onClick();
       }}
       onContextMenu={(e) => {
         e.preventDefault();
-        if (isNextToDeactivate) {
-          removeRune(pathNumber);
-        }
+        onRightClick();
       }}
       onMouseEnter={() => setHover(true)}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onAnimationEnd={() => setPlayDarkenAnimation(false)}
     >
     </div>
   );

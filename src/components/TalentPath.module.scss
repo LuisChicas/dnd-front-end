@@ -1,10 +1,14 @@
 .container {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+
+  &:not(:first-child) {
+    margin-top: 40px;
+  }
 }
 
 .name {
+  font-size: 12px;
   margin-right: 30px;
 }
 
@@ -13,19 +17,13 @@
   align-items: center;
 }
 
-.item {
-  width: 40px;
-  height: 40px;
-  background-color: aliceblue;
-
-  border-width: 4px;
-  border-style: solid;
-  border-image: linear-gradient(to bottom, lightblue 50%, darkgray 50%, lightblue 100%);
-  border-image-slice: 1;
-}
-
 .path-joint {
-  height: 10px;
+  height: 12px;
   width: 40px;
-  background-color: gray;
+  background-color: #212223;
+  border: 1px solid #292a2b;
+
+  @media (min-width: 1025px) {
+    width: 80px;
+  }
 }

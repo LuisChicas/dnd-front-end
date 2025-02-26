@@ -6,11 +6,14 @@ import TalentPath from "@/components/TalentPath";
 import { MAX_RUNES } from "../utilities/constants";
 
 export default function Home() {
-  const { getRunes } = useTalentsContext();
+  const { getRunes, getRuneLimitAnimation, setRuneLimitAnimation } = useTalentsContext();
   return (
     <div className={styles["root-container"]}>
       <div className={styles.container}>
-        <div className={styles.title}>
+        <div className={styles["title-mobile"]}>
+          TitanStar Legends
+        </div>
+        <div className={styles["title-desktop"]}>
           TitanStar Legends - Rune Mastery Loadout Talent Calculator 9000
         </div>
         <div className={styles.tree}>        
@@ -27,8 +30,14 @@ export default function Home() {
             />
           </div>
           <div className={styles.points}>
-            <span>{getRunes()} / {MAX_RUNES}</span>
-            <span>Points Spent</span>
+            <span>
+              <span 
+                className={getRuneLimitAnimation ? styles["rune-limit-animation"] : ""} 
+                onAnimationEnd={() => setRuneLimitAnimation(false)}>
+                  {getRunes()}
+              </span> / {MAX_RUNES}
+            </span>
+            <span className={styles["points-text"]}>Points Spent</span>
           </div>
         </div>
       </div>

@@ -12,6 +12,8 @@ interface TalentsContextProps {
   getRunes: (path?: number) => number;
   addRune: (path: number) => void;
   removeRune: (path: number) => void;
+  getRuneLimitAnimation: boolean;
+  setRuneLimitAnimation: (value: boolean) => void;
 }
 
 const TalentsContext = createContext<TalentsContextProps | undefined>(undefined);
@@ -23,6 +25,7 @@ interface TalentsProviderProps {
 export const TalentsProvider = ({ children }: TalentsProviderProps) => {
   const [pathOne, setPathOne] = useState<number>(0);
   const [pathTwo, setPathTwo] = useState<number>(0);
+  const [runeLimitAnimation, setRuneLimitAnimation] = useState<boolean>(false);
   
   return (
     <TalentsContext.Provider value={{ 
@@ -35,6 +38,8 @@ export const TalentsProvider = ({ children }: TalentsProviderProps) => {
       },
       addRune: (path) => path === 1 ? setPathOne(pathOne + 1) : setPathTwo(pathTwo + 1),
       removeRune: (path) => path === 1 ? setPathOne(pathOne - 1) : setPathTwo(pathTwo - 1),
+      getRuneLimitAnimation: runeLimitAnimation,
+      setRuneLimitAnimation: (value) => setRuneLimitAnimation(value)
     }}>
       {children}
     </TalentsContext.Provider>

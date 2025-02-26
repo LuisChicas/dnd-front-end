@@ -1,43 +1,94 @@
 .root-container {
   display: flex;
+  padding: 20px 15px;
 }
 
 .container {
   background-image: url('../../assets/talent-calc-bg.png');
-  background-size: auto;
+  background-size: cover;
   border: 2px solid #15191d;
   width: fit-content;
-  margin: 20px auto 0 auto;
-  padding: 10px 20px;
+  margin: 0 auto;
+  padding: 10px 30px 55px 30px;
+
+  @media (min-width: 1025px) {
+    padding: 10px 20px 55px 20px;
+  }
 }
 
 .title {
-  background-color: #181b1c;
-  margin-bottom: 50px;
+  background-color: #181b1c;  
   padding: 5px 0px;
   text-align: center;
   font-weight: 700;
+  font-size: 20px;
+}
+
+.title-mobile {
+  @extend .title;
+  display: block;
+  margin-bottom: 50px;
+
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+.title-desktop {
+  @extend .title;
+  display: none;
+
+  @media (min-width: 1025px) {
+    display: block;
+    margin-bottom: 60px;
+  }
+}
+
+.tree {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @media (min-width: 1025px) {
+    flex-direction: row;
+  }
 }
 
 .points {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 18px;
   align-items: center;
   background-color: #060708;
   border: 2px solid #0e1012;
-  padding: 12px 14px;
-  margin-left: 60px;
-  margin-right: 50px;
+  padding: 14px 22px;
+  margin: 0px 50px 40px 60px;
 
-  span:last-of-type {
+  .points-text {
     color: #405269;
+  }
+
+  @media (min-width: 1025px) {
+    flex-direction: column;
+    gap: unset;
+    margin-bottom: 0;
+    padding: 12px 14px;
   }
 }
 
-// 10,15,18
-// 18,20,23
+@keyframes textRed {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #fa6a6a;
+  }
+  100% {
+    color: white;
+  }
+}
 
-.tree {
-  display: flex;
-  align-items: center;
+.rune-limit-animation {
+  animation: textRed 0.5s ease-in-out;
 }
